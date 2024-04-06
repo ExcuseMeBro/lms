@@ -28,13 +28,16 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Set Environment Variables
-        uses: ./.github/actions/setvars
-        with:
-          varFilePath: ./.github/variables/myvars.env
+#      - name: Set Environment Variables
+#        uses: ./.github/actions/setvars
+#        with:
+#          varFilePath: ./.github/variables/myvars.env
 
-      - name: Start Docker-Compose
-        run: docker-compose -f docker-compose-test.yml up -d
+#      - name: Create external-net
+#        run: docker network create external-net
+#
+#      - name: Start Docker-Compose
+#        run: docker-compose -f docker-compose-test.yml up -d
 
       - name: Install dependencies
         run: npm i
@@ -42,5 +45,5 @@ jobs:
       - name: Run tests
         run: npm run test:e2e
 
-      - name: Stop Docker-Compose
-        run: docker-compose -f docker-compose-test.yml down
+#      - name: Stop Docker-Compose
+#        run: docker-compose -f docker-compose-test.yml down
