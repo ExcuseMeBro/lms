@@ -129,7 +129,7 @@ export class AuthService {
     return tokens;
   }
 
-  async generateAccessToken(user: User): Promise<{ accessToken: string }> {
+  async generateAccessToken(user: { id: string; phone: string; role: string }): Promise<{ accessToken: string }> {
     const accessToken = await this.jwtService.signAsync(
       {
         id: user.id,
