@@ -1,0 +1,23 @@
+services:
+  api:
+    container_name: api
+    image: api
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - external-net
+    env_file: 
+      - .env
+    environment:
+      - DB_HOST=postgres
+      - REDIS_HOST=redis
+
+networks:
+  external-net:
+    external: true
